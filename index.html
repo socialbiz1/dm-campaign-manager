@@ -498,6 +498,13 @@
     }
 
     /* ── CONSENT ── */
+    .consent-intro {
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 10px;
+    }
+
     .consent-box {
       border: 1px solid var(--border);
       border-radius: 10px;
@@ -512,6 +519,9 @@
     .consent-box dt { font-weight: 700; color: var(--text); margin-top: 8px; font-size: 12px; }
     .consent-box dt:first-child { margin-top: 0; }
     .consent-box dd { margin-left: 0; }
+    .consent-box dd b { color: var(--text); font-weight: 700; }
+    .consent-box a { color: var(--purple); }
+    .consent-box { max-height: 210px; }
 
     .consent-check {
       display: flex;
@@ -613,6 +623,59 @@
     .field-error { font-size: 11px; color: var(--red); margin-top: 2px; display: none; }
     input.invalid, textarea.invalid, select.invalid { border-color: var(--red) !important; }
 
+    /* ── 하단 마무리 CTA ── */
+    .closing-cta {
+      margin-top: 44px;
+      background: var(--grad);
+      border-radius: 18px;
+      padding: 40px 28px;
+      text-align: center;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .closing-cta::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='30' cy='30' r='20'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    .closing-cta > * { position: relative; z-index: 1; }
+
+    .closing-cta h2 {
+      font-size: clamp(1.1rem, 3vw, 1.4rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.45;
+      margin-bottom: 10px;
+    }
+
+    .closing-cta p {
+      font-size: 13.5px;
+      opacity: 0.9;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .closing-cta a {
+      display: inline-block;
+      background: #fff;
+      color: var(--purple-dark);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 800;
+      padding: 14px 34px;
+      border-radius: 10px;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .closing-cta a:hover { transform: translateY(-1px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+
+    /* 상단 고정 헤더에 가리지 않도록 앵커 보정 */
+    #apply { scroll-margin-top: 76px; }
+
     /* ── FOOTER ── */
     footer {
       text-align: center;
@@ -682,190 +745,8 @@
 
 <!-- MAIN -->
 <div class="main">
-
-  <!-- ── 이런 분께 ── -->
-  <div class="section-head reveal">
-    <span class="eyebrow">WHO IT'S FOR</span>
-    <h2>계정이 많아질수록<br />운영·결제·리포트가 계정 수만큼 늘어납니다</h2>
-    <p>DM 캠페인 관리자는 그 전부를 하나로 묶습니다.</p>
-  </div>
-
-  <div class="audience reveal">
-    <div class="aud-card">
-      <div class="aud-emoji">🏢</div>
-      <h3>브랜드 마케팅팀</h3>
-      <p>브랜드·라인별로 인스타 계정이 여러 개. 계정마다 따로 로그인하고, 따로 결제하고, 따로 세팅하고 계신다면.</p>
-    </div>
-    <div class="aud-card">
-      <div class="aud-emoji">📈</div>
-      <h3>마케팅 대행사</h3>
-      <p>고객사 계정 수십 개를 대행 운영. 계정마다 세팅을 반복하고, 성과 리포트를 수작업으로 취합하고 계신다면.</p>
-    </div>
-    <div class="aud-card">
-      <div class="aud-emoji">🎬</div>
-      <h3>MCN · 인플루언서 소속사</h3>
-      <p>소속 인플루언서 계정을 한 캠페인에 한 번에 투입해야 하고, 정산도 한 번에 처리해야 한다면.</p>
-    </div>
-  </div>
-
-  <!-- ── 어떻게 동작하나 ── -->
-  <div class="section-head reveal">
-    <span class="eyebrow">HOW IT WORKS</span>
-    <h2>어떻게 동작하나요</h2>
-    <p>대표관리자 1명이 세팅하고, 각 계정은 연결 후 게시만 하면 됩니다.</p>
-  </div>
-
-  <div class="card reveal">
-    <div class="card-body">
-      <div class="flow">
-
-        <div class="flow-item">
-          <div class="flow-num">1</div>
-          <div class="flow-body">
-            <h3>계정 초대</h3>
-            <p>
-              대표관리자가 함께 운영할 인플루언서·담당자의 <strong>이메일 주소를 추가</strong>하면
-              초대 메일이 발송됩니다. 인스타그램 계정을 여러 개 등록해 하나의 조직으로 묶습니다.
-            </p>
-            <div class="flow-note">
-              초대받은 멤버는 <strong>조직 ID + 본인 이메일</strong>로 로그인합니다.
-              대표관리자의 이메일 주소는 멤버에게 노출되지 않습니다.
-            </div>
-          </div>
-        </div>
-
-        <div class="flow-item">
-          <div class="flow-num">2</div>
-          <div class="flow-body">
-            <h3>통합 대리 결제</h3>
-            <p>
-              계정마다 개별 결제할 필요가 없습니다. 대표관리자가 연동된
-              <strong>전체 계정의 이용료를 한 번에 결제</strong>합니다.
-              인플루언서에게 결제를 요청하거나 영수증을 따로 모을 일이 없습니다.
-            </p>
-          </div>
-        </div>
-
-        <div class="flow-item">
-          <div class="flow-num">3</div>
-          <div class="flow-body">
-            <h3>댓글 · DM 템플릿 일괄 배포</h3>
-            <p>
-              미리 세팅해 둔 댓글 자동 답장 · DM 자동화 시나리오를
-              <strong>선택한 계정들에 한 번에 배포</strong>합니다.
-              계정마다 처음부터 다시 세팅하던 작업이 한 번으로 줄어듭니다.
-            </p>
-          </div>
-        </div>
-
-        <div class="flow-item">
-          <div class="flow-num">4</div>
-          <div class="flow-body">
-            <h3>각 계정은 연결하고 게시만</h3>
-            <p>
-              배포받은 인플루언서는 본인 인스타그램 계정을 연결하고
-              <strong>게시하기만 하면</strong> 자동화가 바로 시작됩니다.
-              세팅 방법을 한 명씩 안내할 필요가 없습니다.
-            </p>
-          </div>
-        </div>
-
-        <div class="flow-item">
-          <div class="flow-num">5</div>
-          <div class="flow-body">
-            <h3>성과는 통합으로, 필요하면 개별로</h3>
-            <p>
-              전체 계정 성과를 <strong>합산해서</strong> 보거나,
-              <strong>소재 단위로</strong> 계정별 성과를 분해해서 봅니다.
-              캠페인 리포트를 계정마다 열어 취합할 필요가 없습니다.
-            </p>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 비교 ── -->
-  <div class="section-head reveal">
-    <span class="eyebrow">BEFORE / AFTER</span>
-    <h2>무엇이 달라지나요</h2>
-  </div>
-
-  <div class="card reveal">
-    <div class="card-body" style="padding:0">
-      <div class="compare-wrap">
-        <table class="compare">
-          <thead>
-            <tr>
-              <th style="width:26%"></th>
-              <th style="width:37%">지금</th>
-              <th class="hl" style="width:37%">DM 캠페인 관리자</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th>계정 접근</th>
-              <td>계정마다 따로 로그인</td>
-              <td class="hl">한 콘솔에서 전체 계정</td>
-            </tr>
-            <tr>
-              <th>결제</th>
-              <td>계정마다 개별 결제·개별 영수증</td>
-              <td class="hl">대표관리자가 통합 대리 결제</td>
-            </tr>
-            <tr>
-              <th>자동화 세팅</th>
-              <td>계정마다 처음부터 다시</td>
-              <td class="hl">템플릿 한 번 만들어 일괄 배포</td>
-            </tr>
-            <tr>
-              <th>인플루언서 작업</th>
-              <td>세팅 방법을 한 명씩 안내</td>
-              <td class="hl">인스타 연결 후 게시만</td>
-            </tr>
-            <tr>
-              <th>성과 확인</th>
-              <td>계정별로 열어서 수작업 취합</td>
-              <td class="hl">통합 조회 + 소재 단위 개별 조회</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-
-  <!-- ── 안전 ── -->
-  <div class="section-head reveal">
-    <span class="eyebrow">SAFETY</span>
-    <h2>계정이 많을수록,<br />안전한 구조가 더 중요해집니다</h2>
-  </div>
-
-  <div class="card reveal">
-    <div class="card-body">
-      <div class="safety-list">
-        <div class="safety-item">
-          <div class="safety-check">✓</div>
-          <p><strong>메타(Instagram) 공식 API 기반</strong>입니다. 계정 비밀번호를 넘겨받는 비공식 자동화 툴과 근본적으로 구조가 다릅니다.</p>
-        </div>
-        <div class="safety-item">
-          <div class="safety-check">✓</div>
-          <p>모든 발송은 <strong>고객이 먼저 반응(댓글·스토리·DM)한 뒤</strong>에 나갑니다. 무작위 콜드 DM은 지원하지 않습니다 — 계정 정지의 주원인이기 때문입니다.</p>
-        </div>
-        <div class="safety-item">
-          <div class="safety-check">✓</div>
-          <p><strong>안전 발송 한도</strong>(시간당 발송량, 동일 문구 반복 방지)를 시스템이 자동으로 지킵니다.</p>
-        </div>
-        <div class="safety-item">
-          <div class="safety-check">✓</div>
-          <p>연결할 계정은 <strong>프로페셔널(비즈니스·크리에이터) 계정</strong>이어야 하며, 페이스북 페이지 연결이 필요합니다. 연동은 공식 OAuth 방식이라 비밀번호를 공유하지 않습니다.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-
   <!-- ── 신청 ── -->
-  <div class="section-head reveal" id="apply">
+  <div class="section-head reveal" id="apply" style="margin-top:40px">
     <span class="eyebrow">APPLY</span>
     <h2>도입 신청</h2>
     <p>신청서를 남겨주시면 담당자가 직접 전화드려 운영 규모와 요금을 안내합니다.</p>
@@ -1104,10 +985,16 @@
 
     <!-- 5. 개인정보 동의 -->
     <!--
-      ⚠️ 법무 확정본 교체 필요
-      두레이 META-InstagramMessenger/388 첨부 문서
-      '소셜비즈_캠페인관리자_개인정보 수집 및 이용 동의_V2.0.docx' 기준으로
-      아래 수집항목·목적·보유기간 문구를 확정본으로 교체할 것.
+      개인정보 수집·이용 동의 문구 출처 (2026-09-02 반영)
+      · 두레이 META-InstagramMessenger/388 첨부
+        「소셜비즈_캠페인관리자_개인정보 수집 및 이용 동의_V2.1.docx」(2026-05-20, 이유정)
+        → 보유기간·동의거부 문장 표현을 확정본에 맞춤
+      · 라이브 처리방침 https://socialbiz.nhndata.com/privacy (v8.0, 시행 2026-09-01)
+        → 개인정보 보호책임자 연락처, 파기 문구 인용
+
+      ※ 확정본 V2.1 은 "제품 회원가입" 기준(이메일 ID·비밀번호·사업자등록번호 등)이라
+        본 페이지(도입 상담 신청)와 수집 항목이 다르다. 항목은 이 폼이 실제로 받는 값으로
+        정확히 기재했고, 문장 체계만 확정본을 따랐다. 폼 필드를 바꾸면 아래 항목도 함께 고칠 것.
     -->
     <div class="card">
       <div class="card-header">
@@ -1118,23 +1005,42 @@
         </div>
       </div>
       <div class="card-body">
+        <p class="consent-intro">
+          주식회사 엔에이치엔데이터(이하 &ldquo;회사&rdquo;)는 아래와 같이 개인정보를 수집·이용합니다.
+        </p>
+
         <div class="consent-box">
           <dl>
-            <dt>수집 항목</dt>
-            <dd>회사/브랜드명, 담당자 성함, 직책·부서, 연락처, 이메일, 문의 내용 및 선택 입력 정보(회사 유형, 예정 계정 수, 도입 희망 시기, 소셜비즈 이용 여부, 관심 기능, 통화 가능 시간대)</dd>
-            <dt>수집 목적</dt>
-            <dd>DM 캠페인 관리자 도입 상담 및 안내, 견적 제공, 계약 조건 협의, 상담 이력 관리</dd>
-            <dt>보유 및 이용 기간</dt>
-            <dd>상담 종료 후 1년까지 보유하며, 이후 지체 없이 파기합니다. 단, 관계 법령에 따라 보존 의무가 있는 경우 해당 기간 동안 보관합니다.</dd>
-            <dt>동의 거부 권리</dt>
-            <dd>개인정보 수집·이용에 동의하지 않으실 수 있습니다. 다만 동의를 거부하시는 경우 상담 진행 및 견적 안내가 어렵습니다.</dd>
+            <dt>수집하는 개인정보의 항목</dt>
+            <dd>
+              <b>[필수]</b> 회사/브랜드명, 담당자 성함, 직책·부서, 연락처(휴대폰 번호), 이메일 주소, 문의 내용<br />
+              <b>[선택]</b> 회사 유형, 통합 관리 예정 계정 수, 도입 희망 시기, 소셜비즈 이용 여부, 관심 기능, 통화 가능 시간대
+            </dd>
+            <dt>수집 및 이용 목적</dt>
+            <dd>DM 캠페인 관리자 도입 상담 및 안내, 견적 제공, 계약 조건 협의, 원활한 고객상담 및 문의사항 처리</dd>
+            <dt>보유 및 이용기간</dt>
+            <dd>
+              상담 종료 후 1년까지 보유하며, 수집 및 이용목적이 달성되면 지체 없이 파기합니다.
+              다만 관계법령의 규정에 의하여 보존할 필요가 있는 경우 회사는 관계법령에서 정한
+              일정한 기간 동안 보존합니다.
+            </dd>
+            <dt>동의를 거부할 권리 및 불이익</dt>
+            <dd>
+              귀하는 개인정보 수집 및 이용 동의를 거부할 권리가 있습니다.
+              다만 동의를 거부하실 경우 도입 상담 및 견적 안내가 제한될 수 있습니다.
+            </dd>
+            <dt>개인정보 보호책임자</dt>
+            <dd>
+              김윤중 (이사 / 정보보호TF) · <a href="mailto:dl_data_privacy@nhndata.com">dl_data_privacy@nhndata.com</a> · 1544-5420<br />
+              그 밖의 사항은 <a href="https://socialbiz.nhndata.com/privacy" target="_blank" rel="noopener">소셜비즈 개인정보 처리방침</a>을 따릅니다.
+            </dd>
           </dl>
         </div>
 
         <label class="consent-check" for="inputConsent">
           <input type="checkbox" name="개인정보_수집이용_동의" id="inputConsent" value="동의함" />
           <span class="box"></span>
-          <span class="txt"><em>[필수]</em> 개인정보 수집 및 이용에 동의합니다.</span>
+          <span class="txt"><em>[필수]</em> 위 내용을 확인하였으며, 개인정보 수집 및 이용에 동의합니다.</span>
         </label>
         <span class="field-error" id="errConsent">개인정보 수집·이용에 동의해 주세요.</span>
       </div>
@@ -1150,6 +1056,196 @@
       <p class="form-error" id="formError">입력하지 않은 필수 항목이 있습니다. 위에서 확인해 주세요.</p>
     </div>
   </form>
+
+
+  <!-- ── 이런 분께 ── -->
+  <div class="section-head reveal">
+    <span class="eyebrow">WHO IT'S FOR</span>
+    <h2>계정이 많아질수록<br />운영·결제·리포트가 계정 수만큼 늘어납니다</h2>
+    <p>DM 캠페인 관리자는 그 전부를 하나로 묶습니다.</p>
+  </div>
+
+  <div class="audience reveal">
+    <div class="aud-card">
+      <div class="aud-emoji">🏢</div>
+      <h3>브랜드 마케팅팀</h3>
+      <p>브랜드·라인별로 인스타 계정이 여러 개. 계정마다 따로 로그인하고, 따로 결제하고, 따로 세팅하고 계신다면.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-emoji">📈</div>
+      <h3>마케팅 대행사</h3>
+      <p>고객사 계정 수십 개를 대행 운영. 계정마다 세팅을 반복하고, 성과 리포트를 수작업으로 취합하고 계신다면.</p>
+    </div>
+    <div class="aud-card">
+      <div class="aud-emoji">🎬</div>
+      <h3>MCN · 인플루언서 소속사</h3>
+      <p>소속 인플루언서 계정을 한 캠페인에 한 번에 투입해야 하고, 정산도 한 번에 처리해야 한다면.</p>
+    </div>
+  </div>
+
+  <!-- ── 어떻게 동작하나 ── -->
+  <div class="section-head reveal">
+    <span class="eyebrow">HOW IT WORKS</span>
+    <h2>어떻게 동작하나요</h2>
+    <p>대표관리자 1명이 세팅하고, 각 계정은 연결 후 게시만 하면 됩니다.</p>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-body">
+      <div class="flow">
+
+        <div class="flow-item">
+          <div class="flow-num">1</div>
+          <div class="flow-body">
+            <h3>계정 초대</h3>
+            <p>
+              대표관리자가 함께 운영할 인플루언서·담당자의 <strong>이메일 주소를 추가</strong>하면
+              초대 메일이 발송됩니다. 인스타그램 계정을 여러 개 등록해 하나의 조직으로 묶습니다.
+            </p>
+            <div class="flow-note">
+              초대받은 멤버는 <strong>조직 ID + 본인 이메일</strong>로 로그인합니다.
+              대표관리자의 이메일 주소는 멤버에게 노출되지 않습니다.
+            </div>
+          </div>
+        </div>
+
+        <div class="flow-item">
+          <div class="flow-num">2</div>
+          <div class="flow-body">
+            <h3>통합 대리 결제</h3>
+            <p>
+              계정마다 개별 결제할 필요가 없습니다. 대표관리자가 연동된
+              <strong>전체 계정의 이용료를 한 번에 결제</strong>합니다.
+              인플루언서에게 결제를 요청하거나 영수증을 따로 모을 일이 없습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="flow-item">
+          <div class="flow-num">3</div>
+          <div class="flow-body">
+            <h3>댓글 · DM 템플릿 일괄 배포</h3>
+            <p>
+              미리 세팅해 둔 댓글 자동 답장 · DM 자동화 시나리오를
+              <strong>선택한 계정들에 한 번에 배포</strong>합니다.
+              계정마다 처음부터 다시 세팅하던 작업이 한 번으로 줄어듭니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="flow-item">
+          <div class="flow-num">4</div>
+          <div class="flow-body">
+            <h3>각 계정은 연결하고 게시만</h3>
+            <p>
+              배포받은 인플루언서는 본인 인스타그램 계정을 연결하고
+              <strong>게시하기만 하면</strong> 자동화가 바로 시작됩니다.
+              세팅 방법을 한 명씩 안내할 필요가 없습니다.
+            </p>
+          </div>
+        </div>
+
+        <div class="flow-item">
+          <div class="flow-num">5</div>
+          <div class="flow-body">
+            <h3>성과는 통합으로, 필요하면 개별로</h3>
+            <p>
+              전체 계정 성과를 <strong>합산해서</strong> 보거나,
+              <strong>소재 단위로</strong> 계정별 성과를 분해해서 봅니다.
+              캠페인 리포트를 계정마다 열어 취합할 필요가 없습니다.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 비교 ── -->
+  <div class="section-head reveal">
+    <span class="eyebrow">BEFORE / AFTER</span>
+    <h2>무엇이 달라지나요</h2>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-body" style="padding:0">
+      <div class="compare-wrap">
+        <table class="compare">
+          <thead>
+            <tr>
+              <th style="width:26%"></th>
+              <th style="width:37%">지금</th>
+              <th class="hl" style="width:37%">DM 캠페인 관리자</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th>계정 접근</th>
+              <td>계정마다 따로 로그인</td>
+              <td class="hl">한 콘솔에서 전체 계정</td>
+            </tr>
+            <tr>
+              <th>결제</th>
+              <td>계정마다 개별 결제·개별 영수증</td>
+              <td class="hl">대표관리자가 통합 대리 결제</td>
+            </tr>
+            <tr>
+              <th>자동화 세팅</th>
+              <td>계정마다 처음부터 다시</td>
+              <td class="hl">템플릿 한 번 만들어 일괄 배포</td>
+            </tr>
+            <tr>
+              <th>인플루언서 작업</th>
+              <td>세팅 방법을 한 명씩 안내</td>
+              <td class="hl">인스타 연결 후 게시만</td>
+            </tr>
+            <tr>
+              <th>성과 확인</th>
+              <td>계정별로 열어서 수작업 취합</td>
+              <td class="hl">통합 조회 + 소재 단위 개별 조회</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── 안전 ── -->
+  <div class="section-head reveal">
+    <span class="eyebrow">SAFETY</span>
+    <h2>계정이 많을수록,<br />안전한 구조가 더 중요해집니다</h2>
+  </div>
+
+  <div class="card reveal">
+    <div class="card-body">
+      <div class="safety-list">
+        <div class="safety-item">
+          <div class="safety-check">✓</div>
+          <p><strong>메타(Instagram) 공식 API 기반</strong>입니다. 계정 비밀번호를 넘겨받는 비공식 자동화 툴과 근본적으로 구조가 다릅니다.</p>
+        </div>
+        <div class="safety-item">
+          <div class="safety-check">✓</div>
+          <p>모든 발송은 <strong>고객이 먼저 반응(댓글·스토리·DM)한 뒤</strong>에 나갑니다. 무작위 콜드 DM은 지원하지 않습니다 — 계정 정지의 주원인이기 때문입니다.</p>
+        </div>
+        <div class="safety-item">
+          <div class="safety-check">✓</div>
+          <p><strong>안전 발송 한도</strong>(시간당 발송량, 동일 문구 반복 방지)를 시스템이 자동으로 지킵니다.</p>
+        </div>
+        <div class="safety-item">
+          <div class="safety-check">✓</div>
+          <p>연결할 계정은 <strong>프로페셔널(비즈니스·크리에이터) 계정</strong>이어야 하며, 페이스북 페이지 연결이 필요합니다. 연동은 공식 OAuth 방식이라 비밀번호를 공유하지 않습니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ── 하단 마무리 CTA ── -->
+  <div class="closing-cta reveal">
+    <h2>계정이 늘어날수록,<br class="br-desk" /> 이 구조가 주는 이득도 함께 커집니다</h2>
+    <p>신청서를 남겨주시면 담당자가 1영업일 내에 전화드려<br class="br-desk" /> 운영 규모에 맞는 견적을 안내합니다.</p>
+    <a href="#apply">도입 신청하기 →</a>
+  </div>
 
   <!-- SUCCESS -->
   <div class="success-screen" id="successScreen">
